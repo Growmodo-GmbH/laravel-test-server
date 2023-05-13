@@ -6,6 +6,10 @@ export REPO=$3
 export DEPLOY_HOST="http://test.growmodo.com/$BRANCH/public"
 export EXEC_FILE='commands.sh'
 export DB_DEFAULT="laravel-test"
+# Add local env
+if [ -f .env ]; then
+    export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+fi
 
 (git clone --branch $DEPLOY $REPO $BRANCH) || echo ""
 

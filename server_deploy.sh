@@ -6,7 +6,7 @@ export REPO=$3
 export DEPLOY_HOST="http://test.growmodo.com/$BRANCH/public"
 export EXEC_FILE='commands.sh'
 export DB_DEFAULT="laravel-test"
-# Add local env
+# Add local .env
 if [ -f .env ]; then
     export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
 fi
@@ -24,7 +24,8 @@ echo "Deploying application..."
     # Update codebase
     git fetch origin $DEPLOY
     git reset --hard origin/$DEPLOY
-
+    
+    # Add application .env
     if [ -f .env ]; then
         export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
     fi

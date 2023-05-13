@@ -7,6 +7,8 @@ echo "Updating server..."
 
 git fetch origin $BRANCH
 git reset --hard origin/$BRANCH
-
+echo "Test"
+ls
+pwd
 echo "Done!"
 

@@ -34,13 +34,14 @@ echo "Deploying application..."
     composer install --no-interaction --prefer-dist --optimize-autoloader
 
     # Create database
-    [ "$DB_DATABSE" = "$DB_DEFAULT" ] && (php artisan tinker --execute="(new PDO('mysql:host=' . env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD')))->exec('CREATE DATABASE \`' . env('DB_DATABASE') . '\`')")
-
+    if [ "$DB_DATABASE" != "$DB_DEFAULT" ]; then
+        php artisan tinker --execute="(new PDO('mysql:host=' . env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD')))->exec('CREATE DATABASE \`' . env('DB_DATABASE') . '\`')")
+    fi
+    
     # Migrate database
     php artisan migrate --force
 
-    # Note: If you're using queue workers, this is the place to restart them.
-    # ...
+    # Note: If you're want to run other commands, place here
     if [ -f $EXEC_FILE ]; then
         (chmod +x $EXEC_FILE) || echo ""
         (./$EXEC_FILE) || echo "Warning: Commands Failed!"

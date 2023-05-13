@@ -2,7 +2,6 @@
 
 export EVENT_NAME=$1
 export BRANCH=$2
-
 # Add local env
 if [ -f .env ]; then
     export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)

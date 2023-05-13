@@ -14,9 +14,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.PUSH_TOKEN }}
     - name: Deploy to server
       uses: appleboy/ssh-action@master
       with:

@@ -21,4 +21,4 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
-        script: 'cd /var/www/laravel-test-server && chmod +x *.sh && ./update.sh ${{ env.REF_NAME }} ${{ env.REPO_URL }}'
+        script: 'cd /var/www/laravel-test-server && chmod +x *.sh && ./update.sh ${{ env.REF_NAME }} ${{ env.REPO_URL }} && chmod +x *.sh'

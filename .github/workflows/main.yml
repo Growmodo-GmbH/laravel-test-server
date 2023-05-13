@@ -8,7 +8,6 @@ env:
   REF_NAME: ${{ github.ref_name }}
   REPO_NAME: ${{ github.event.repository.name }}
   REPO_URL: ${{ github.event.repository.url }}
-  DEPLOY_BRANCH: deploy-${{ github.ref_name }}
   
 jobs:
   deploy:
@@ -22,4 +21,4 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
-        script: 'cd /var/www/laravel-test-server && ./update.sh ${{ env.REF_NAME }} ${{ env.DEPLOY_BRANCH }} ${{ env.REPO_URL }}'
+        script: 'cd /var/www/laravel-test-server && ./update.sh ${{ env.REF_NAME }} ${{ env.REPO_URL }}'

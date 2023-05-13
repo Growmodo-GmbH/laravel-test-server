@@ -11,7 +11,7 @@ if [ -f .env ]; then
     export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
 fi
 
-(git clone --branch $DEPLOY $REPO $BRANCH) || echo ""
+(git clone --branch $DEPLOY $REPO $INIT_DIR/$BRANCH) || echo ""
 pwd
 cd "$INIT_DIR/$BRANCH"
 pwd

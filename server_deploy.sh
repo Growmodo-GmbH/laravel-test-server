@@ -35,7 +35,7 @@ echo "Deploying application..."
 
     # Create database
     if [ "$DB_DATABASE" != "$DB_DEFAULT" ]; then
-        php artisan tinker --execute="(new PDO('mysql:host=' . env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD')))->exec('CREATE DATABASE \`' . env('DB_DATABASE') . '\`')")
+        php artisan tinker --execute="(new PDO('mysql:host=' . env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD')))->exec('CREATE DATABASE \`' . env('DB_DATABASE') . '\`')"
     fi
     
     # Migrate database

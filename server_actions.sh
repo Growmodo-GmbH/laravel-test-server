@@ -3,15 +3,22 @@
 export EVENT_NAME=$1
 export BRANCH=$2
 
-if [ ! -d $BRANCH ]; then
+# Add local env
+if [ -f .env ]; then
+    export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+fi
+
+if [ ! -d "$INIT_DIR/$BRANCH" ]; then
     exit 0;
 fi
 
-cd $BRANCH
+cd "$INIT_DIR/$BRANCH"
+
 set -e
 
 echo "Running actions..."
 
+# Add application .env
 if [ -f .env ]; then
     export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
 fi

@@ -34,7 +34,7 @@ echo "Deploying application..."
     composer install --no-interaction --prefer-dist --optimize-autoloader
 
     # Create database
-    [ "$DB_DATABSE" = "$DB_DEFAULT" ] && php artisan tinker --execute="(new PDO('mysql:host=' . env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD')))->exec('CREATE DATABASE \`' . env('DB_DATABASE') . '\`')"
+    [ "$DB_DATABSE" = "$DB_DEFAULT" ] && (php artisan tinker --execute="(new PDO('mysql:host=' . env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD')))->exec('CREATE DATABASE \`' . env('DB_DATABASE') . '\`')")
 
     # Migrate database
     php artisan migrate --force

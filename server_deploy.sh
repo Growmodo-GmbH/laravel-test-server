@@ -7,8 +7,6 @@ export DEPLOY_HOST="http://test.growmodo.com/$BRANCH/public"
 export EXEC_FILE='commands.sh'
 export DB_DEFAULT="laravel-test"
 
-export INIT_DIR='../projects' 
-
 (git clone --branch $DEPLOY $REPO $BRANCH) || echo ""
 
 cd "$INIT_DIR/$BRANCH"

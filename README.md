@@ -8,3 +8,16 @@
 <p align="center">
     A <a href="https://www.growmodo.com" target="_blank">Growmodo</a>'s trial task server scripts and configs.
 </p>
+
+## Instruction
+Copy `.env.example` to `.env`
+```bash
+cp .env.example .env
+```
+Update `.env` values
+
+Check sample configs inside `config_template`.
+
+#
+
+&copy; [Growmodo, GmbH](https://growmodo.com)

@@ -12,9 +12,9 @@ if [ -f .env ]; then
 fi
 
 (git clone --branch $DEPLOY $REPO $INIT_DIR/$BRANCH) || echo ""
-pwd
+
 cd "$INIT_DIR/$BRANCH"
-pwd
+
 set -e
 
 echo "Deploying application..."

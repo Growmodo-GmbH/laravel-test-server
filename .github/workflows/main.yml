@@ -1,0 +1,28 @@
+name: Deploy to Test Server
+ 
+on:
+  push:
+    branches: [ main ]
+    
+env:
+  REF_NAME: ${{ github.ref_name }}
+  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_URL: ${{ github.event.repository.url }}
+  DEPLOY_BRANCH: deploy-${{ github.ref_name }}
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PUSH_TOKEN }}
+    - name: Deploy to server
+      uses: appleboy/ssh-action@master
+      with:
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
+        key: ${{ secrets.SSH_KEY }}
+        script: 'cd /var/www/laravel-test-server && ./update.sh ${{ env.REF_NAME }} ${{ env.DEPLOY_BRANCH }} ${{ env.REPO_URL }}'

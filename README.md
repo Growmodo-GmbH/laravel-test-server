@@ -16,7 +16,7 @@ cp .env.example .env
 ```
 Update `.env` values
 
-Check sample configs inside `config_template`.
+Check sample configs inside `config_templates`.
 
 #
 

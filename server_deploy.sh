@@ -4,7 +4,7 @@ export BRANCH=$1
 export DEPLOY=$2
 export REPO=$3
 export DEPLOY_HOST="http://test.growmodo.com/$BRANCH/public"
-export EXEC_FILE='commands.sh'
+export EXEC_FILE="commands.sh"
 export DB_DEFAULT="laravel-test"
 # Add local .env
 if [ -f .env ]; then
@@ -34,7 +34,7 @@ echo "Deploying application..."
     composer install --no-interaction --prefer-dist --optimize-autoloader
 
     # Create database
-    if [ "$DB_DATABASE" != "$DB_DEFAULT" ]; then
+    if [ "$DB_DATABASE" != "$DB_DEFAULT" -a "$DB_DATABASE" != "" ]; then
         php artisan tinker --execute="(new PDO('mysql:host=' . env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD')))->exec('CREATE DATABASE \`' . env('DB_DATABASE') . '\`')"
     fi
     

@@ -3,7 +3,7 @@
 export BRANCH=$1
 export DEPLOY=$2
 export REPO=$3
-export DEPLOY_HOST="http://test.growmodo.com/$BRANCH/public/"
+export DEPLOY_HOST="https://test.growmodo.dev/$BRANCH/public/"
 export EXEC_FILE="commands.sh"
 export DB_DEFAULT="laravel-test"
 # Add local .env
